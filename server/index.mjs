@@ -26,17 +26,23 @@ export function validateContact(body) {
 }
 
 function mailConfig(env) {
-  const port = Number(env.SMTP_PORT || 587);
-  const recipient = env.CONTACT_EMAIL || 'mondalkoushick393@gmail.com';
-  if (!env.SMTP_HOST || !env.SMTP_USER || !env.SMTP_PASS || !env.SMTP_FROM ||
+  const recipient = (env.CONTACT_EMAIL || env.SMTP_FROM || env.SMTP_USER || 'mondalkoushick393@gmail.com').trim();
+  const sender = (env.SMTP_FROM || env.SMTP_USER || recipient).trim();
+  const username = (env.SMTP_USER || recipient).trim();
+  const host = (env.SMTP_HOST || (recipient.toLowerCase().endsWith('@gmail.com') ? 'smtp.gmail.com' : '')).trim();
+  const password = (env.SMTP_PASS || '').trim();
+  const port = Number(env.SMTP_PORT || (host === 'smtp.gmail.com' ? 587 : 587));
+
+  if (!host || !username || !password || !sender || !recipient ||
       !Number.isInteger(port) || port < 1 || port > 65535 ||
-      !cleanHeader(env.SMTP_FROM) || !EMAIL.test(env.SMTP_FROM) || !cleanHeader(recipient) || !EMAIL.test(recipient)) return null;
+      !cleanHeader(sender) || !EMAIL.test(sender) || !cleanHeader(recipient) || !EMAIL.test(recipient)) return null;
+
   return {
     recipient,
-    from: env.SMTP_FROM,
-    smtp: { host: env.SMTP_HOST, port, secure: env.SMTP_SECURE === 'true',
+    from: sender,
+    smtp: { host, port, secure: env.SMTP_SECURE === 'true',
       requireTLS: env.SMTP_SECURE !== 'true',
-      auth: { user: env.SMTP_USER, pass: env.SMTP_PASS },
+      auth: { user: username, pass: password },
       connectionTimeout: 10000, greetingTimeout: 10000, socketTimeout: 15000 },
   };
 }
