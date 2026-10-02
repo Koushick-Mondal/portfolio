@@ -7,4 +7,6 @@ import './ai-lab-overrides.css';
 import './refinements.css';
 import './hero-light.css';
 import './ambient-background.css';
+import './contact-overrides.css';
+import './visual-polish.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);

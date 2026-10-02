@@ -1,5 +1,6 @@
 import { memo, useEffect, useRef, useState, type CSSProperties, type KeyboardEvent } from 'react';
-import { projects, type ProjectVisual } from '../data/projects';
+import { createPortal } from 'react-dom';
+import { projects, type Project, type ProjectVisual } from '../data/projects';
 import './work.css';
 
 const sceneLineSets: Record<ProjectVisual, string[]> = {
@@ -96,12 +97,69 @@ const ProjectArtwork = memo(function ProjectArtwork({ visual, index }: { visual:
 
 const stackedQuery = '(max-width: 800px), (max-height: 700px), (prefers-reduced-motion: reduce)';
 
+function ProjectDetails({ project, onClose }: { project: Project; onClose: () => void }) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    const trigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const bodyOverflow = document.body.style.overflow;
+    const rootOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    dialog.showModal();
+    dialog.querySelector<HTMLButtonElement>('button')?.focus({ preventScroll: true });
+    return () => {
+      dialog.close();
+      document.body.style.overflow = bodyOverflow;
+      document.documentElement.style.overflow = rootOverflow;
+      trigger?.focus({ preventScroll: true });
+    };
+  }, []);
+
+  const trapFocus = (event: KeyboardEvent<HTMLDialogElement>) => {
+    if (event.key !== 'Tab') return;
+    const controls = Array.from(event.currentTarget.querySelectorAll<HTMLElement>('button, a[href]'));
+    const first = controls[0];
+    const last = controls[controls.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last?.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first?.focus();
+    }
+  };
+
+  return createPortal(
+    <dialog ref={dialogRef} className="project-dialog" aria-labelledby="project-dialog-title"
+      aria-describedby="project-dialog-description" onKeyDown={trapFocus}
+      onCancel={(event) => { event.preventDefault(); onClose(); }}>
+      <div className="project-dialog__header">
+        <p>Project details</p>
+        <button type="button" onClick={onClose} aria-label="Close project details">Close <span aria-hidden="true">×</span></button>
+      </div>
+      <h2 id="project-dialog-title">{project.title}</h2>
+      <p id="project-dialog-description">{project.description}</p>
+      <dl><dt>Category</dt><dd>{project.category}</dd></dl>
+      <h3>Highlights</h3>
+      <ul>{project.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}</ul>
+      <h3>Stack</h3>
+      <p>{project.stack?.length ? project.stack.join(' · ') : 'Stack details forthcoming'}</p>
+      {project.github && <a className="project-dialog__link" href={project.github} target="_blank" rel="noopener noreferrer">View GitHub repository <span className="project-dialog__link-note">(opens in a new tab)</span> ↗</a>}
+      <p className="project-dialog__note">Artwork is an original visual study, not a product screenshot.</p>
+    </dialog>, document.body,
+  );
+}
+
 export default function Work() {
   const sectionRef = useRef<HTMLElement>(null);
   const frameRef = useRef<number | null>(null);
   const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isStacked, setIsStacked] = useState(() => window.matchMedia(stackedQuery).matches);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -205,10 +263,13 @@ export default function Work() {
                 <p className="project-eyebrow">{project.verified ? project.eyebrow : 'Concept / project'}</p>
                 <h3 id={`project-title-${index}`}>{project.title}</h3>
                 <p className="project-description">{project.verified ? project.description : project.status}</p>
-                {project.verified && <div className="project-footer">
+                <div className="project-footer">
                   <span>{project.status}</span>
-                  <a href="#contact">Start a conversation <span aria-hidden="true">↗</span></a>
-                </div>}
+                  <button type="button" className="project-details-button" aria-haspopup="dialog"
+                    aria-label={`View details for ${project.title}`} onClick={() => setSelectedProject(project)}>
+                    View details <span aria-hidden="true">↗</span>
+                  </button>
+                </div>
               </div>
             </article>
           ))}
@@ -232,6 +293,7 @@ export default function Work() {
           ))}
         </nav>
       </div>
+      {selectedProject && <ProjectDetails project={selectedProject} onClose={() => setSelectedProject(null)} />}
     </section>
   );
 }

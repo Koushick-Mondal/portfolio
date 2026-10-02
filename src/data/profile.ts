@@ -1,4 +1,4 @@
-export const links = { email: 'mailto:mondalkoushick393@gmail.com', github: 'https://github.com/koushick-mondal', linkedin: 'https://www.linkedin.com/in/koushick-mondal/' };
+export const links = { email: 'mailto:mondalkoushick393@gmail.com', github: 'https://github.com/Koushick-Mondal', linkedin: 'https://www.linkedin.com/in/koushick-mondal/', phone: 'tel:+918900500157', whatsapp: 'https://wa.me/918900500157?text=Hi%20Koushick%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project%2Fopportunity.' };
 export const experience = [
   { date: 'SEP 2026 — PRESENT', company: 'CyberHiveX', role: 'Co-Founder', text: 'Building in cybersecurity, threat intelligence and proactive digital defense.' },
   { date: 'JUL 2026 — PRESENT', company: 'Handshake', role: 'Software Engineer · Project Dynamo', text: 'Evaluating AI-generated solutions through software engineering, debugging and code analysis.' },

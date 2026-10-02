@@ -150,6 +150,65 @@
 }
 .project-footer a { color: #b8c2ef; text-decoration: none; border-bottom: 1px solid rgba(184, 194, 239, 0.35); padding-bottom: 0.2rem; }
 .project-footer a:hover, .project-footer a:focus-visible { color: #fff; border-color: #fff; }
+.project-footer { color: #a3abc0; }
+.project-details-button {
+  min-height: 44px;
+  padding: 0.5rem 0;
+  border: 0;
+  border-bottom: 1px solid #7188c1;
+  background: transparent;
+  color: #c6d5ff;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+.project-details-button:hover { color: #fff; border-color: #fff; }
+.project-details-button:focus-visible { outline: 2px solid #8aafff; outline-offset: 5px; }
+
+.project-dialog {
+  box-sizing: border-box;
+  width: min(42rem, calc(100% - 2rem));
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid #354a79;
+  border-radius: 1rem;
+  color: #c5cee3;
+  background: #0b1429;
+  box-shadow: 0 24px 100px #0009;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.project-dialog::backdrop { background: rgb(2 6 17 / 85%); }
+.project-dialog__header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.project-dialog__header p, .project-dialog dt, .project-dialog h3 {
+  color: #a1baff;
+  font: 500 0.75rem/1.5 ui-monospace, monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.project-dialog__header button {
+  min-height: 44px;
+  padding: 0.5rem 0.85rem;
+  color: #f4f7ff;
+  background: #1c3463;
+  border: 1px solid #597ab4;
+  border-radius: 0.4rem;
+  font: inherit;
+  cursor: pointer;
+}
+.project-dialog h2 { margin: 1.25rem 0; color: #f3f6ff; font-size: clamp(2rem, 7vw, 3.5rem); line-height: 1.1; letter-spacing: -0.04em; overflow-wrap: anywhere; }
+.project-dialog h3 { margin-top: 1.5rem; }
+.project-dialog dd { margin: 0.35rem 0 0; }
+.project-dialog ul { padding-left: 1.25rem; }
+.project-dialog li + li { margin-top: 0.5rem; }
+.project-dialog__link { display: inline-block; padding-block: 0.75rem; color: #b5ccff; text-underline-offset: 0.25rem; }
+.project-dialog__link-note { font-size: 0.8rem; }
+.project-dialog button:focus-visible, .project-dialog a:focus-visible { outline: 2px solid #91b4ff; outline-offset: 4px; }
+.project-dialog__note { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #34425d; font-size: 0.8rem; color: #a5b1ca; }
 .project-scene--forthcoming .project-description { color: #8ea7d5; font-size: 0.85rem; }
 .project-scene--forthcoming .project-description::before { content: ''; display: inline-block; width: 1.5rem; height: 1px; margin: 0 0.65rem 0.25rem 0; background: var(--work-accent); }
 

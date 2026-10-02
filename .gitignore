@@ -1,7 +1,9 @@
-
 node_modules/
 dist/
-.opencode/
+.env
 .env.local
-*.tsbuildinfo
+.env.*
+!.env.example
+.opencode/
 .next/
+*.tsbuildinfo
