@@ -1,0 +1,21 @@
+/* Visual-only pass: one light computational atmosphere across every section. */
+body{background:#f4f7fb;color:#17263b}
+.work-section{--work-ink:#17263b;--work-muted:#63738b;--work-line:#b8c8da88;--work-accent:#3767e8;background:#eef3f9;color:#17263b}
+.work-sticky{background:radial-gradient(circle at 70% 38%,#dceaff 0,transparent 32%),linear-gradient(135deg,#f7faff,#edf3fa 58%,#f7f9fd);box-shadow:inset 0 1px #fff}
+.work-sticky:after{opacity:.07;mix-blend-mode:multiply}
+.work-kicker,.project-eyebrow,.project-footer,.work-index button{color:#567095}
+.work-header h2,.project-copy h3{color:#17263b;text-shadow:none}
+.project-visual{border-color:#b9c9db;background:#e9f0f8aa;box-shadow:0 20px 60px #6b85a31a}
+.project-art__grid path{stroke:#6e8caf24}.project-art__nodes circle:not(.project-art__pulse){fill:#3767e8}.project-art__coordinate{fill:#557091}.project-visual__note{color:#607491}.project-footer{color:#60728a}.project-footer a,.project-details-button{color:#285cca;border-color:#8ca9d3}
+.work-index button{color:#718198}.work-index button i{background:#c5d2df}.work-index button.is-active{color:#264f9f}
+.ai-lab{--lab-bg:#edf3fa;--lab-line:#b9c9dc;background:var(--lab-bg);color:#17263b;box-shadow:inset 0 1px #fff}
+.ai-lab__header{color:#5f7491}.ai-lab__intro p{color:#63758d}.ai-lab__hint{color:#71839b}.ai-lab__stage{border-color:#b8c8da;background:linear-gradient(90deg,#41658a15 1px,transparent 1px),linear-gradient(#41658a15 1px,transparent 1px);box-shadow:0 20px 60px #607b9c16}.ai-lab__edges line{stroke:#7891ae80}.ai-lab__edges line.is-linked{stroke:#315fd2}.ai-lab__orbit{stroke:#6984a640}.ai-lab__stage-label{color:#58708f}.ai-lab__active h3{color:#315fd2}.ai-lab__active p{color:#63758d}.ai-lab__controls button{color:#58708d;border-color:#bccbdb}.ai-lab__controls button.is-active{color:#1f4ba8;background:#ffffff77}
+.engineering{background:#edf3f9;color:#17263b}.engineering .section-label,.engineering .eyebrow{color:#617691}.tech-cloud button{color:#687b95}.tech-cloud button.active{color:#285cca}.system-flow .flow-node{border-color:#5080d8;background:#edf3f9}.system-flow>div:before{background:#a9bed8}.tech-description{color:#647993}
+.contact{background:linear-gradient(135deg,#edf4fb,#f8fafc);color:#17263b}.contact .section-label,.contact-top .eyebrow{color:#617691}.contact h2{color:#17263b}.contact h2 .serif-word{color:#315fd2}.contact:after{border-color:#8ba9d155;box-shadow:0 0 0 70px #6b92cf17,0 0 0 140px #6b92cf0d}
+.menu-overlay{background:linear-gradient(135deg,#f4f8fd,#e7eff9);color:#17263b}.menu-overlay nav a:hover{color:#315fd2}.menu-top button{color:#48627f}.menu-overlay .eyebrow{color:#627894}
+.hero{background:transparent}.hero-art{filter:drop-shadow(0 28px 46px #53739a1c);mix-blend-mode:multiply}
+.developer-scene .scene-orbit-a{animation:scene-drift-a 18s ease-in-out infinite alternate}.developer-scene .scene-orbit-b{animation:scene-drift-b 23s ease-in-out infinite alternate}.developer-scene .scene-label{animation:scene-label-drift 7s ease-in-out infinite alternate}.developer-scene .scene-label:nth-of-type(2n){animation-delay:-2s}.developer-scene .scene-screen{animation:scene-screen-breathe 8s ease-in-out infinite alternate}@keyframes scene-drift-a{to{transform:translate3d(var(--scene-x),calc(var(--scene-y) - 8px),0) rotate(-13deg) scale(1.02)}}@keyframes scene-drift-b{to{transform:translate3d(var(--scene-x),calc(var(--scene-y) + 7px),0) rotate(43deg) scale(.97)}}@keyframes scene-label-drift{to{filter:translateY(-3px)}}@keyframes scene-screen-breathe{to{box-shadow:inset 0 0 0 5px #d6e1ef,0 0 28px #5b87c522}}
+.intro.welcome-intro{background:linear-gradient(130deg,#fbfdff,#e7effa);color:#17263b}
+.intro.welcome-intro p{font-family:'DM Sans',sans-serif;font-size:clamp(2.8rem,8vw,8rem);font-weight:650;letter-spacing:.14em;color:#17263b;text-shadow:0 10px 30px #7691b52c}
+@media(max-width:800px){.project-visual{background:#e9f1f9}.ai-lab{margin:0}.contact .contact-form{box-shadow:0 20px 50px #6b85a31a}}
+@media(prefers-reduced-motion:reduce){.ambient-aurora,.ambient-points i,.ambient-wave{animation:none!important}.intro.welcome-intro p{animation:none!important}}

@@ -1,0 +1,265 @@
+.architecture-constellation {
+  --architecture-ink: #eef4ff;
+  --architecture-muted: #91a3c1;
+  --architecture-line: rgba(139, 169, 226, 0.22);
+  --architecture-accent: #71e6ff;
+  color: var(--architecture-ink);
+}
+
+.architecture-constellation__header {
+  max-width: 42rem;
+  margin-bottom: 2rem;
+}
+
+.architecture-constellation__header h2 {
+  margin: 0.35rem 0 0.75rem;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.architecture-constellation__header h2 em {
+  color: var(--architecture-accent);
+  font-style: normal;
+}
+
+.architecture-constellation__header p:last-child {
+  max-width: 35rem;
+  margin: 0;
+  color: var(--architecture-muted);
+  line-height: 1.6;
+}
+
+.architecture-constellation__eyebrow,
+.architecture-constellation__node-count {
+  margin: 0;
+  color: var(--architecture-accent);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.architecture-constellation__graph {
+  position: relative;
+  min-height: 34rem;
+  isolation: isolate;
+}
+
+.architecture-constellation__nodes {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(8rem, auto));
+  gap: 1rem;
+  min-height: 34rem;
+}
+
+.architecture-constellation__node {
+  align-self: center;
+  min-width: 0;
+  padding: 1.1rem;
+  border: 1px solid var(--architecture-line);
+  border-radius: 1rem;
+  background: rgba(9, 18, 38, 0.78);
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.16);
+  transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.architecture-constellation__node[data-node='frontend'] { grid-column: 1; grid-row: 1; }
+.architecture-constellation__node[data-node='backend'] { grid-column: 3; grid-row: 1; }
+.architecture-constellation__node[data-node='ai'] { grid-column: 1; grid-row: 2; }
+.architecture-constellation__node[data-node='database'] { grid-column: 3; grid-row: 2; }
+.architecture-constellation__node[data-node='tools'] { grid-column: 2; grid-row: 3; }
+
+.architecture-constellation__node[data-related='true'] {
+  border-color: rgba(113, 230, 255, 0.78);
+  background: rgba(16, 47, 72, 0.9);
+  box-shadow: 0 0 2.5rem rgba(74, 197, 238, 0.16);
+}
+
+.architecture-constellation__node-button {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.75rem;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.architecture-constellation__node-button:focus-visible {
+  outline: 2px solid var(--architecture-accent);
+  outline-offset: 0.4rem;
+  border-radius: 0.2rem;
+}
+
+.architecture-constellation__node-button:disabled {
+  cursor: default;
+  opacity: 0.62;
+}
+
+.architecture-constellation__node-label {
+  font-size: 1.2rem;
+  font-weight: 650;
+}
+
+.architecture-constellation__node-description {
+  margin: 0.65rem 0 0;
+  color: var(--architecture-muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.architecture-constellation__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.architecture-constellation__items li {
+  padding: 0.25rem 0.45rem;
+  border: 1px solid rgba(145, 163, 193, 0.24);
+  border-radius: 999px;
+  color: #c7d5ec;
+  font-size: 0.72rem;
+}
+
+.architecture-constellation__hub {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 8rem;
+  height: 8rem;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(113, 230, 255, 0.6);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 25%, rgba(78, 151, 203, 0.4), rgba(10, 21, 45, 0.96) 65%);
+  box-shadow: 0 0 3rem rgba(74, 197, 238, 0.22), inset 0 0 2rem rgba(113, 230, 255, 0.08);
+  color: #dff9ff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.architecture-constellation__hub-mark {
+  display: block;
+  margin-bottom: -0.5rem;
+  color: var(--architecture-accent);
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.architecture-constellation__connections {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.architecture-constellation__connection {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 25%;
+  height: 1px;
+  transform-origin: left center;
+  background: var(--architecture-line);
+  transition: background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.architecture-constellation__connection[data-connection='frontend'] { transform: rotate(-143deg); }
+.architecture-constellation__connection[data-connection='backend'] { transform: rotate(-37deg); }
+.architecture-constellation__connection[data-connection='ai'] { transform: rotate(180deg); }
+.architecture-constellation__connection[data-connection='database'] { transform: rotate(0deg); }
+.architecture-constellation__connection[data-connection='tools'] { transform: rotate(90deg); }
+
+.architecture-constellation__connection[data-active='true'] {
+  background: var(--architecture-accent);
+  box-shadow: 0 0 0.6rem var(--architecture-accent);
+}
+
+.architecture-constellation__detail {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--architecture-line);
+}
+
+.architecture-constellation__detail-title {
+  margin: 0.35rem 0 0;
+  font-weight: 650;
+}
+
+.architecture-constellation__detail > p:last-child {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--architecture-muted);
+  line-height: 1.55;
+  text-align: right;
+}
+
+@media (max-width: 720px) {
+  .architecture-constellation__graph,
+  .architecture-constellation__nodes {
+    min-height: 0;
+  }
+
+  .architecture-constellation__nodes {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: none;
+  }
+
+  .architecture-constellation__node[data-node='frontend'],
+  .architecture-constellation__node[data-node='backend'],
+  .architecture-constellation__node[data-node='ai'],
+  .architecture-constellation__node[data-node='database'],
+  .architecture-constellation__node[data-node='tools'] {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .architecture-constellation__hub,
+  .architecture-constellation__connections {
+    display: none;
+  }
+
+  .architecture-constellation__detail {
+    display: block;
+  }
+
+  .architecture-constellation__detail > p:last-child {
+    margin-top: 0.75rem;
+    text-align: left;
+  }
+}
+
+@media (max-width: 460px) {
+  .architecture-constellation__nodes {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .architecture-constellation__node,
+  .architecture-constellation__connection {
+    transition: none;
+  }
+}

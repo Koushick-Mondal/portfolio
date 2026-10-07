@@ -1,0 +1,33 @@
+/* Composition corrections from the live tablet review. */
+.header{position:sticky;top:0;background:#090a0bf5;z-index:30;height:76px}
+.hero{height:calc(100svh - 76px);min-height:700px}
+.hero-title-note,.hero-topline,.core-caption{color:#a1a7af}
+.hero-description{max-width:360px}
+.hero-art{right:-1%;top:22%;width:64%;height:72%}
+.hero-roles{margin-left:10%;color:#9aa3b0}
+.contact-arrow{bottom:0}
+.tech-cloud button,.social-links a,.header-actions button{min-height:44px}
+.ai-lab__stage{min-height:0;aspect-ratio:1.15}
+.ai-lab__network{position:absolute;inset:0}
+.ai-lab__nodes circle{fill:#789fff!important}
+.ai-lab__active h3{color:#91aeef!important}
+.ai-lab__controls button{min-height:48px}
+.cursor{display:none}
+@media(pointer:fine) and (prefers-reduced-motion:no-preference){.cursor{display:block}}
+@media(min-width:801px) and (max-height:800px){.hero{min-height:640px}.hero h1{font-size:min(12vw,160px)}.hero-title{margin-top:24px}.hero-bottom{bottom:64px}.hero-description p{font-size:16px}.hero-art{top:20%;height:75%}}
+@media(max-width:800px){
+ .hero{display:flex;flex-direction:column;height:auto;min-height:calc(100svh - 76px);max-height:none;padding-top:20px}
+ .hero-title{margin-top:30px}.hero h1{font-size:17vw;line-height:.87}
+ .hero-title-note{display:none}
+ .hero-art{position:relative;top:auto;right:auto;order:2;width:100%;height:clamp(230px,34svh,350px);margin:4px 0 -4px;flex-shrink:0}
+ .hero-topline{order:0}.hero-title{order:1}.hero-bottom{order:3;margin:0;position:relative;z-index:3}
+ .hero-description{max-width:360px}.hero-description>.eyebrow{font-size:9px}.hero-description p{font-size:17px;margin:12px 0 7px;line-height:1.45;max-width:340px}
+ .hero-description p br{display:none}.hero-description .text-link{min-height:44px}
+ .hero-baseline{order:4;margin-top:20px;min-height:38px}.core-caption{display:none}
+ .section{padding-top:70px;padding-bottom:70px}.section-label{font-size:10px}
+ .ai-lab{padding-top:70px;padding-bottom:70px}.ai-lab__stage{min-height:0;aspect-ratio:1.35}.ai-lab__network{height:100%}
+ .capability>button{grid-template-columns:1fr 24px;gap:12px}.capability>button>.eyebrow{grid-column:1/-1;font-size:10px}.cap-title{font-size:30px;letter-spacing:-1px}.cap-details{margin-left:0}
+ .contact-arrow{position:relative;right:auto;bottom:auto;margin-top:24px}.contact h2{font-size:16vw}
+ .social-links{gap:26px}.social-links a{display:inline-flex;align-items:center;font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}

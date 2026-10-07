@@ -1,0 +1,98 @@
+.project-card-shell {
+  --project-card-rotate-x: 0deg;
+  --project-card-rotate-y: 0deg;
+  --project-card-glow-x: 50%;
+  --project-card-glow-y: 50%;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(145, 163, 193, 0.22);
+  border-radius: 1.25rem;
+  background: rgba(10, 19, 39, 0.78);
+  box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.18);
+  transform: perspective(70rem) rotateX(var(--project-card-rotate-x)) rotateY(var(--project-card-rotate-y));
+  transform-origin: center;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  will-change: transform;
+}
+
+.project-card-shell::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(14rem circle at var(--project-card-glow-x) var(--project-card-glow-y), rgba(104, 220, 255, 0.16), transparent 68%);
+  content: '';
+  pointer-events: none;
+}
+
+.project-card-shell:focus-within {
+  border-color: rgba(113, 230, 255, 0.72);
+  box-shadow: 0 0 0 3px rgba(113, 230, 255, 0.14), 0 1.25rem 3rem rgba(0, 0, 0, 0.18);
+}
+
+.project-card-shell__header,
+.project-card-shell__body {
+  position: relative;
+  z-index: 1;
+}
+
+.project-card-shell__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.25rem 0;
+}
+
+.project-card-shell__header h3 {
+  margin: 0.25rem 0 0;
+  color: #eef4ff;
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+  line-height: 1.1;
+}
+
+.project-card-shell__category {
+  margin: 0;
+  color: #71e6ff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.project-card-shell__metadata {
+  color: #91a3c1;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  text-align: right;
+}
+
+.project-card-shell__body {
+  padding: 1.25rem;
+}
+
+.project-card-shell--bare {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.project-card-shell--bare .project-card-shell__body {
+  padding: 0;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .project-card-shell {
+    transform: none;
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+    will-change: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card-shell {
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}
