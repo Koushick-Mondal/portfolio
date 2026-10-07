@@ -14,6 +14,8 @@ export interface Project {
   date?: string;
   linkNote?: string;
   repositoryReference?: string;
+  /** True once a project has a verified live URL or confirmed public status. */
+  verified?: boolean;
 }
 
 export const projects: Project[] = [

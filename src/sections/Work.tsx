@@ -4,7 +4,7 @@ import { projects, type Project, type ProjectVisual } from '../data/projects';
 import './work.css';
 
 const sceneLineSets: Record<ProjectVisual, string[]> = {
-  topology: [
+  care: [
     'M60 370 C160 250 230 460 350 310 S570 120 700 260 S850 410 970 180',
     'M20 185 C180 260 260 70 420 190 S710 420 1010 280',
     'M180 520 C300 360 420 560 555 360 S760 90 920 250',
@@ -20,7 +20,7 @@ const sceneLineSets: Record<ProjectVisual, string[]> = {
     'M80 180 H920 M80 300 H920 M80 430 H920',
     'M240 180 V430 M500 100 V430 M760 180 V430',
   ],
-  transactions: [
+  solar: [
     'M30 120 L250 120 L330 230 L520 230 L610 100 L980 100',
     'M30 300 L210 300 L300 190 L470 410 L650 250 L980 250',
     'M30 480 L280 480 L380 350 L590 500 L720 370 L980 370',
@@ -38,19 +38,19 @@ const sceneLineSets: Record<ProjectVisual, string[]> = {
 };
 
 const nodeSets: Record<ProjectVisual, Array<[number, number, number]>> = {
-  topology: [[110, 340, 7], [270, 210, 4], [420, 190, 8], [560, 355, 5], [700, 260, 9], [890, 245, 4]],
+  care: [[110, 340, 7], [270, 210, 4], [420, 190, 8], [560, 355, 5], [700, 260, 9], [890, 245, 4]],
   ocean: [[190, 180, 5], [420, 280, 9], [690, 160, 4], [830, 390, 7]],
   storage: [[240, 180, 6], [380, 100, 8], [500, 300, 5], [680, 100, 9], [760, 300, 6]],
-  transactions: [[250, 120, 6], [300, 190, 8], [470, 410, 5], [610, 100, 9], [720, 370, 6]],
+  solar: [[250, 120, 6], [300, 190, 8], [470, 410, 5], [610, 100, 9], [720, 370, 6]],
   career: [[310, 270, 8], [390, 400, 5], [610, 190, 9], [700, 310, 6], [820, 160, 4]],
   knowledge: [[330, 450, 5], [420, 180, 8], [570, 360, 4], [710, 500, 7], [780, 260, 10]],
 };
 
 const visualLabels: Record<ProjectVisual, string> = {
-  topology: 'NETWORK TOPOLOGY / VISUAL STUDY',
+  care: 'CARE / HOSPITAL GRAPH / VISUAL STUDY',
   ocean: 'OCEAN / GEOSPATIAL / VISUAL STUDY',
   storage: 'DISTRIBUTED STORAGE / VISUAL STUDY',
-  transactions: 'TRANSACTION ANOMALY / VISUAL STUDY',
+  solar: 'SOLAR / MECHANICAL SYSTEM / VISUAL STUDY',
   career: 'CAREER PATHWAYS / VISUAL STUDY',
   knowledge: 'KNOWLEDGE GRAPH / VISUAL STUDY',
 };
